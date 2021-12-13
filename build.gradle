@@ -1,3 +1,10 @@
+buildscript {
+	repositories{
+		maven{ url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+		maven{ url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+	}
+}
+
 plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
 	id 'io.spring.nohttp' version '0.0.10'
@@ -148,7 +155,7 @@ configure(allprojects) { project ->
 			}
 			dependency 'org.apache.httpcomponents.client5:httpclient5:5.1'
 			dependency 'org.apache.httpcomponents.core5:httpcore5-reactive:5.1.1'
-			dependency "org.eclipse.jetty:jetty-reactive-httpclient:3.0.4"
+	 		dependency "org.eclipse.jetty:jetty-reactive-httpclient:3.0.4"
 
 			dependency "org.jruby:jruby:9.3.1.0"
 			dependency "org.python:jython-standalone:2.7.1"
@@ -253,6 +260,9 @@ configure(allprojects) { project ->
 			cacheChangingModulesFor 0, "seconds"
 		}
 		repositories {
+			maven{ url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+			maven{ url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+
 			mavenCentral()
 			maven { url "https://repo.spring.io/libs-spring-framework-build" }
 		}
@@ -393,4 +403,5 @@ configure(rootProject) {
 			}
 		}
 	}
+
 }
