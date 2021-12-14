@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2016 the original author or authors.
+ * Copyright 2002-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,12 @@
  * limitations under the License.
  */
 
-package org.springframework.lang;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package org.springframework.cache
 
 /**
- * Indicates that the annotated element uses an API from the {@code sun.misc}
- * package.
+ * Extension for [CacheManager.getCache(name)] providing a `cm[name]` variant.
  *
- * @author Stephane Nicoll
- * @since 4.3
+ * @author Mikhael Sokolov
+ * @since 6.0
  */
-@Retention(RetentionPolicy.CLASS)
-@Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.TYPE})
-@Documented
-public @interface UsesSunMisc {
-}
+operator fun CacheManager.get(name: String): Cache? = getCache(name)

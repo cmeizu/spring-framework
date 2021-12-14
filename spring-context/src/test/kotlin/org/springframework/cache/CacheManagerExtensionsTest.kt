@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2020 the original author or authors.
+ * Copyright 2002-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,20 @@
  * limitations under the License.
  */
 
-package org.springframework.context.support;
+package org.springframework.cache
 
-/**
- * MBean operation interface for the {@link LiveBeansView} feature.
- *
- * @author Juergen Hoeller
- * @since 3.2
- * @deprecated as of 5.3, in favor of using Spring Boot actuators for such needs
- */
-@Deprecated
-public interface LiveBeansViewMBean {
+import org.junit.jupiter.api.Assertions.assertNotEquals
+import org.junit.jupiter.api.Test
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager
 
-	/**
-	 * Generate a JSON snapshot of current beans and their dependencies.
-	 */
-	String getSnapshotAsJson();
+class CacheManagerExtensionsTest {
 
+	@Test
+	fun `Check operator get variant`() {
+		val cm = createCacheManager("c")
+		assertNotEquals(null, cm["c"])
+	}
+
+	private fun createCacheManager(cacheName: String = "c"): CacheManager =
+		ConcurrentMapCacheManager(cacheName)
 }
